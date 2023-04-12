@@ -2,21 +2,134 @@
 <html>
 <head>
 	<title>Prophet Forecast</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		nav {
+			background-color: #333;
+			color: white;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px 20px;
+		}
+
+		nav h1 {
+			margin: 0;
+			font-size: 24px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+		}
+
+		nav li {
+			margin-right: 20px;
+		}
+
+		nav a {
+			color: white;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 16px;
+		}
+
+		form {
+			margin: 50px 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		label {
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+
+		input[type="file"] {
+			padding: 10px;
+			border: none;
+			background-color: #f2f2f2;
+			margin-bottom: 20px;
+		}
+
+		input[type="number"] {
+			padding: 10px;
+			border: none;
+			background-color: #f2f2f2;
+			margin-bottom: 20px;
+			width: 100px;
+		}
+
+		input[type="submit"] {
+			padding: 10px 20px;
+			border: none;
+			background-color: #333;
+			color: white;
+			font-weight: bold;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		table {
+			border-collapse: collapse;
+			margin: 50px 20px;
+			width: 100%;
+		}
+
+		th, td {
+			border: 1px solid #ddd;
+			padding: 10px;
+			text-align: left;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		footer {
+			background-color: #333;
+			color: white;
+			text-align: center;
+			padding: 10px;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+		}
+
+	</style>
 </head>
 <body>
-	<h1>Prophet Forecast</h1>
+	<nav>
+		<h1>Prophet Forecast</h1>
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="/execute">Execution Time</a></li>
+			<li><a href="#">About</a></li>
+		</ul>
+	</nav>
+
 	<form method="post" enctype="multipart/form-data">
 		<label for="file">Upload a CSV file:</label>
 		<input type="file" id="file" name="file" accept=".csv">
-		<br>
 		<label for="periods">Periods to forecast:</label>
-		<input type="number" id="periods" name="periods" min="1" max="1000" value="30">
-		<br>
+		<input type="number" id="periods" name="periods" min="1" max="100000" value="30">
 		<input type="submit" value="Get Forecast">
 	</form>
+
 	<div id="forecast-table"></div>
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(function() {
 			$('form').submit(function(event) {
@@ -42,3 +155,4 @@
 	</script>
 </body>
 </html>
+
