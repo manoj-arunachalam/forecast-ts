@@ -42,7 +42,7 @@ def predict():
 	forecast = model.predict(future_df)
 	end_time = time.time()
 
-	execution_time = end_time - start_time
+	execution_time = end_time-start_time
 
 	# Return the forecast as a JSON response
 	return jsonify((forecast[['ds', 'yhat']].tail(periods)).to_dict(orient='records'))
